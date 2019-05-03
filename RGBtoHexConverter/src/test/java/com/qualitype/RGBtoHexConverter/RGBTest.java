@@ -15,7 +15,25 @@ public class RGBTest {
 	}
 
 	@Test
-	public void testRGB_Constructor_red_zero_high() {
+	public void testRGB_Constructor_hex_toLong() {
+		final RGB rgb = new RGB("FFFFFFFF");
+		Assert.assertEquals("FFFFFF", rgb.hex);
+	}
+
+	@Test
+	public void testRGB_Constructor_hex_toShort() {
+		final RGB rgb = new RGB("FFFF");
+		Assert.assertEquals("FFFF00", rgb.hex);
+	}
+
+	@Test
+	public void testRGB_Constructor_hext() {
+		final RGB rgb = new RGB("FFFFFF");
+		Assert.assertEquals("FFFFFF", rgb.hex);
+	}
+
+	@Test
+	public void testRGB_Constructor_rgb_red_zero_high() {
 		final RGB rgb = new RGB(300, 0, 0);
 		Assert.assertEquals(0, rgb.getRed());
 		Assert.assertEquals(0, rgb.getGreen());
@@ -23,7 +41,7 @@ public class RGBTest {
 	}
 
 	@Test
-	public void testRGB_Constructor_red_zero_low() {
+	public void testRGB_Constructor_rgb_red_zero_low() {
 		final RGB rgb = new RGB(-5, 0, 0);
 		Assert.assertEquals(0, rgb.getRed());
 		Assert.assertEquals(0, rgb.getGreen());
@@ -31,7 +49,7 @@ public class RGBTest {
 	}
 
 	@Test
-	public void testRGB_Constructor_green_zero_high() {
+	public void testRGB_Constructor_rgb_green_zero_high() {
 		final RGB rgb = new RGB(0, 300, 0);
 		Assert.assertEquals(0, rgb.getRed());
 		Assert.assertEquals(0, rgb.getGreen());
@@ -39,7 +57,7 @@ public class RGBTest {
 	}
 
 	@Test
-	public void testRGB_Constructor_green_zero_low() {
+	public void testRGB_Constructor_rgb_green_zero_low() {
 		final RGB rgb = new RGB(0, -5, 0);
 		Assert.assertEquals(0, rgb.getRed());
 		Assert.assertEquals(0, rgb.getGreen());
@@ -47,7 +65,7 @@ public class RGBTest {
 	}
 
 	@Test
-	public void testRGB_Constructor_blue_zero_high() {
+	public void testRGB_Constructor_rgb_blue_zero_high() {
 		final RGB rgb = new RGB(0, 0, 300);
 		Assert.assertEquals(0, rgb.getRed());
 		Assert.assertEquals(0, rgb.getGreen());
@@ -55,7 +73,7 @@ public class RGBTest {
 	}
 
 	@Test
-	public void testRGB_Constructor_blue_zero_low() {
+	public void testRGB_Constructor_rgb_blue_zero_low() {
 		final RGB rgb = new RGB(0, 0, -5);
 		Assert.assertEquals(0, rgb.getRed());
 		Assert.assertEquals(0, rgb.getGreen());
@@ -63,7 +81,7 @@ public class RGBTest {
 	}
 
 	@Test
-	public void testRGB_Constructo() {
+	public void testRGB_Constructor_rgb() {
 		final RGB rgb = new RGB(125, 125, 125);
 		Assert.assertEquals(125, rgb.getRed());
 		Assert.assertEquals(125, rgb.getGreen());
@@ -71,17 +89,17 @@ public class RGBTest {
 	}
 
 	@Test
+	public void testRGBToHex_white() {
+		final RGB rgb = new RGB(255, 255, 255);
+		final String white = rgb.RGBToHex();
+		Assert.assertEquals("FFFFFF", white);
+	}
+
+	@Test
 	public void testRGBToHex_black() {
 		final RGB rgb = new RGB(0, 0, 0);
 		final String black = rgb.RGBToHex();
 		Assert.assertEquals("000000", black);
-	}
-
-	@Test
-	public void testRGBToHex_white() {
-		final RGB rgb = new RGB(0, 0, 0);
-		final String white = rgb.RGBToHex();
-		Assert.assertEquals("FFFFFF", white);
 	}
 
 	@Test
