@@ -2,20 +2,22 @@ package com.qualitype.RGBtoHexConverter;
 
 public class RGB {
 
-	public int red;
-	public int green;
-	public int blue;
-	public String hex;
+	public int red = 0;
+	public int green = 0;
+	public int blue = 0;
+	public String hex = "000000";
 
 	public RGB(String hex) {
-		this.hex = hex;
-		final int length = this.hex.length();
-		if (length < 6) {
-			for (int i = length; i < 6; i++) {
-				this.hex += "0";
+		if (hex != null) {
+			this.hex = hex;
+			final int length = this.hex.length();
+			if (length < 6) {
+				for (int i = length; i < 6; i++) {
+					this.hex += "0";
+				}
+			} else if (length > 6) {
+				this.hex = this.hex.substring(0, 6);
 			}
-		} else if (length > 6) {
-			this.hex = this.hex.substring(0, 6);
 		}
 
 	}
