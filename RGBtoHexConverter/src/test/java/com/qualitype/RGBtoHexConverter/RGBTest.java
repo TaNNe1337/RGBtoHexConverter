@@ -89,6 +89,12 @@ public class RGBTest {
 	}
 
 	@Test
+	public void testRGB_Constructor_hex_null() {
+		final RGB rgb = new RGB(null).HexToRGB();
+		Assert.assertEquals("RGB [red=" + 0 + ", green=" + 0 + ", blue=" + 0 + "]", rgb.toString());
+	}
+
+	@Test
 	public void testRGBToHex_white() {
 		final RGB rgb = new RGB(255, 255, 255);
 		final String white = rgb.RGBToHex();
