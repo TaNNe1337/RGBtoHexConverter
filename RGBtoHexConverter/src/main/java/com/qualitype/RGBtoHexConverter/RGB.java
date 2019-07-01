@@ -2,26 +2,18 @@ package com.qualitype.RGBtoHexConverter;
 
 public class RGB {
 
-	public int red = 0;
-	public int green = 0;
-	public int blue = 0;
-	public String hex = "000000";
+	private int red;
+	private int green;
+	private int blue;
 
-	public RGB(String hex) {
-		if (hex != null) {
-			this.hex = hex;
-			final int length = this.hex.length();
-			if (length < 6) {
-				for (int i = length; i < 6; i++) {
-					this.hex += "0";
-				}
-			} else if (length > 6) {
-				this.hex = this.hex.substring(0, 6);
-			}
-		}
-
-	}
-
+	/**
+	 * @param red
+	 * @param green
+	 * @param blue
+	 *
+	 *              if one parameter is smaller than 0 or greater than 255 it will
+	 *              be set to 0
+	 */
 	public RGB(int red, int green, int blue) {
 		if (red <= 255 && red >= 0) {
 			this.red = red;
@@ -38,26 +30,6 @@ public class RGB {
 		} else {
 			blue = 0;
 		}
-
-	}
-
-	public String RGBToHex() {
-		final String formatString = "%02X";
-		final String redHex = String.format(formatString, red);
-		final String greenHex = String.format(formatString, green);
-		final String blueHex = String.format(formatString, blue);
-		return redHex + greenHex + blueHex;
-
-	}
-
-	public RGB HexToRGB() {
-		final String redString = hex.substring(0, 2);
-		final String greenString = hex.substring(2, 4);
-		final String blueString = hex.substring(4, 6);
-		red = Integer.parseInt(redString.toLowerCase(), 16);
-		green = Integer.parseInt(greenString.toLowerCase(), 16);
-		blue = Integer.parseInt(blueString.toLowerCase(), 16);
-		return this;
 
 	}
 
